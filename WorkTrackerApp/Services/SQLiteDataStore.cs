@@ -3,35 +3,34 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WorkTrackerApp.Models;
 using System.Linq;
+using WorkTrackerApp.Helpers;
 
 namespace WorkTrackerApp.Services
 {
     public class SQLiteDataStore : IDataStore<Raport>
     {
         List<Raport> items;
-
+        
         public SQLiteDataStore()
         {
             items = new List<Raport>();
-            var mockItems = new List<Raport>
-            {
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "First company", Date = DateTime.Today, WorkedTime = 100, Description="This is an item description." },
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "Second company", Date = DateTime.Today, WorkedTime = 200, Description="This is an item description." },
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "Third company", Date = DateTime.Today, WorkedTime = 60, Description="This is an item description." },
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "First item", Date = DateTime.Today, WorkedTime = 600, Description="This is an item description." },
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "Second item", Date = DateTime.Today, WorkedTime = 520, Description="This is an item description." },
-                new Raport { Id = Guid.NewGuid().ToString(), Company = "Third item", Date = DateTime.Today, WorkedTime = 330, Description="This is an item description." }
-            };
 
-            foreach (var item in mockItems)
-            {
-                items.Add(item);
-            }
+
+
+            LoadData();
+
+            
+        }
+
+        public async void LoadData()
+        {
+            items = await App.Database.GetItemsAsync();
         }
 
         public async Task<bool> AddItemAsync(Raport item)
         {
-            items.Add(item);
+            await App.Database.SaveItemAsync(item);
+            LoadData();
 
             return await Task.FromResult(true);
         }
@@ -45,7 +44,7 @@ namespace WorkTrackerApp.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             var oldItem = items.Where((Raport arg) => arg.Id == id).FirstOrDefault();
             items.Remove(oldItem);
@@ -53,7 +52,7 @@ namespace WorkTrackerApp.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Raport> GetItemAsync(string id)
+        public async Task<Raport> GetItemAsync(int id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }

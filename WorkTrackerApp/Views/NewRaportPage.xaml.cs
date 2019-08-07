@@ -10,18 +10,31 @@ namespace WorkTrackerApp.Views
     public partial class NewRaportPage : ContentPage
     {
         public Raport Item { get; set; }
-
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
         public NewRaportPage()
         {
             InitializeComponent();
 
+            StartTime = TimeSpan.Zero;
+            EndTime = TimeSpan.Zero;
             Item = new Raport
             {
-                Company = "Item name",
+                Company = "Comapny name",
+                Date = DateTime.Now,
+                WorkedTime = 0,
                 Description = "This is an item description."
             };
 
             BindingContext = this;
+        }
+
+        void Time_Changed(object sender, EventArgs e)
+        {
+            if(TimeSpan.Compare(StartTime,EndTime) < 0)
+            {
+                Item.WorkedTime = (EndTime.Hours*60 + EndTime.Minutes) - (StartTime.Hours*60 + StartTime.Minutes);
+            }
         }
 
         async void Save_Clicked(object sender, EventArgs e)

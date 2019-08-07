@@ -5,9 +5,15 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
+        <StackLayout Spacing="15" Padding="15">
             <Label Text="Company" FontSize="Medium" />
             <Entry Text="{Binding Item.Company}" d:Text="Company name" FontSize="Small" />
+            <Label Text="Date" FontSize="Medium"/>
+            <DatePicker Date="{Binding Item.Date, Mode=TwoWay}"/>
+            <Label Text="Start Time" FontSize="Medium"/>
+            <TimePicker PropertyChanged="Time_Changed" Time="{Binding StartTime, Mode=TwoWay}"/>
+            <Label Text="End Time" FontSize="Medium"/>
+            <TimePicker PropertyChanged="Time_Changed" Time="{Binding EndTime, Mode=TwoWay}"/>
             <Label Text="Description" FontSize="Medium" />
             <Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
         </StackLayout>

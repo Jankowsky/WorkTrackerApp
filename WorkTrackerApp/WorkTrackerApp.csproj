@@ -13,9 +13,13 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\RaportDetailPage.cs" />
     <Compile Remove="Views\RaportsPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
