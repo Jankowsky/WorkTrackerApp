@@ -11,6 +11,7 @@ namespace WorkTrackerApp.Views
 
         RaportDetailViewModel viewModel;
 
+
         public RaportDetailPage(RaportDetailViewModel viewModel)
         {
             InitializeComponent();

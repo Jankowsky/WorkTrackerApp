@@ -6,7 +6,7 @@
         <Label Text="Date:" FontSize="Medium" />
         <Label Text="{Binding Item.Date}" d:Text="Raport date" FontSize="Small" />
         <Label Text="Worked Time:" FontSize="Medium" />
-        <Label Text="{Binding Item.WorkedTime}" d:Text="Raport worked time" FontSize="Small" />
+        <Label Text="{Binding WorkedTime}" d:Text="Raport worked time" FontSize="Small" />
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Item.Description}" d:Text="Raport description" FontSize="Small" />
     </StackLayout>

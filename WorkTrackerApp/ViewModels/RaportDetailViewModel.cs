@@ -6,10 +6,18 @@ namespace WorkTrackerApp.ViewModels
     public class RaportDetailViewModel : BaseViewModel
     {
         public Raport Item { get; set; }
+        public String WorkedTime { get; set; }
         public RaportDetailViewModel(Raport item = null)
         {
             Title = item?.Company;
             Item = item;
+            WorkedTime = CalculateWorkTime(item.WorkedTime);
+        }
+
+        private String CalculateWorkTime(int workedTime)
+        {
+            TimeSpan ts = new TimeSpan((workedTime/60),(workedTime%60), 0);
+            return String.Format("{0:%h} hours {0:%m} minutes", ts);
         }
     }
 }
