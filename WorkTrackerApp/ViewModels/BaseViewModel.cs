@@ -12,7 +12,7 @@ namespace WorkTrackerApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Raport> DataStore => DependencyService.Get<IDataStore<Raport>>() ?? new SQLiteDataStore();
 
         bool isBusy = false;
         public bool IsBusy

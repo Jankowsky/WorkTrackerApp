@@ -2,32 +2,31 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
 using WorkTrackerApp.Models;
 using WorkTrackerApp.Views;
+using Xamarin.Forms;
 
 namespace WorkTrackerApp.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class RaportsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Raport> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public RaportsViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Title = "Raports";
+            Items = new ObservableCollection<Raport>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewRaportPage, Raport>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
+                var newItem = item as Raport;
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
         }
+
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -54,5 +53,7 @@ namespace WorkTrackerApp.ViewModels
                 IsBusy = false;
             }
         }
+
+
     }
 }

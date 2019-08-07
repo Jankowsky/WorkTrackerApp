@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace WorkTrackerApp.Views
 {
-    public class RaportsPage : ContentPage
+    public partial class RaportsPage : ContentPage
     {
         public RaportsPage()
         {

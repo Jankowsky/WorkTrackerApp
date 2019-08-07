@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using WorkTrackerApp.Models;
+using Xamarin.Forms;
 
 namespace WorkTrackerApp.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class NewItemPage : ContentPage
+    public partial class NewRaportPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Raport Item { get; set; }
 
-        public NewItemPage()
+        public NewRaportPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Raport
             {
-                Text = "Item name",
+                Company = "Item name",
                 Description = "This is an item description."
             };
 

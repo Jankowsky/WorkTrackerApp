@@ -1,10 +1,15 @@
 ﻿using System;
+using WorkTrackerApp.Models;
+
 namespace WorkTrackerApp.ViewModels
 {
-    public class RaportDetailViewModel
+    public class RaportDetailViewModel : BaseViewModel
     {
-        public RaportDetailViewModel()
+        public Raport Item { get; set; }
+        public RaportDetailViewModel(Raport item = null)
         {
+            Title = item?.Company;
+            Item = item;
         }
     }
 }
