@@ -6,12 +6,14 @@ namespace WorkTrackerApp.ViewModels
     public class RaportDetailViewModel : BaseViewModel
     {
         public Raport Item { get; set; }
-        public String WorkedTime { get; set; }
+        public string WorkedTime { get; set; }
+        public string Date { get; set; }
         public RaportDetailViewModel(Raport item = null)
         {
             Title = item?.Company;
             Item = item;
             WorkedTime = CalculateWorkTime(item.WorkedTime);
+            Date = item.Date.ToShortDateString();
         }
 
         private String CalculateWorkTime(int workedTime)

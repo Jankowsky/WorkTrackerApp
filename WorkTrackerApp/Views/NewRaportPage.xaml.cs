@@ -12,12 +12,15 @@ namespace WorkTrackerApp.Views
         public Raport Item { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
+        public DateTime Date { get; set; }
         public NewRaportPage()
         {
             InitializeComponent();
 
             StartTime = TimeSpan.Zero;
             EndTime = TimeSpan.Zero;
+            Date = DateTime.Now;
+
             Item = new Raport
             {
                 Company = "Comapny name",

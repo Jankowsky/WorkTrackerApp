@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using WorkTrackerApp.Models;
 using WorkTrackerApp.ViewModels;
 using Xamarin.Forms;
 
 namespace WorkTrackerApp.Views
 {
+    [DesignTimeVisible(false)]
     public partial class RaportDetailPage : ContentPage
     {
 

@@ -22,10 +22,10 @@ namespace WorkTrackerApp.Helpers
             return database.Table<Raport>().ToListAsync();
         }
 
-        public Task<List<Raport>> GetItemsNotDoneAsync()
-        {
-            return database.QueryAsync<Raport>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        }
+        //public Task<List<Raport>> GetItemsNotDoneAsync()
+        //{
+        //    return database.QueryAsync<Raport>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
+        //}
 
         public Task<Raport> GetItemAsync(int id)
         {

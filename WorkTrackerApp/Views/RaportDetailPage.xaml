@@ -4,9 +4,9 @@
         <Label Text="Company:" FontSize="Medium" />
         <Label Text="{Binding Item.Company}" d:Text="Company name" FontSize="Small" />
         <Label Text="Date:" FontSize="Medium" />
-        <Label Text="{Binding Item.Date}" d:Text="Raport date" FontSize="Small" />
+        <Label Text="{Binding Date}" d:Text="02/08/2019" FontSize="Small" />
         <Label Text="Worked Time:" FontSize="Medium" />
-        <Label Text="{Binding WorkedTime}" d:Text="Raport worked time" FontSize="Small" />
+        <Label Text="{Binding WorkedTime}" d:Text="2 hours 14 min" FontSize="Small" />
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Item.Description}" d:Text="Raport description" FontSize="Small" />
     </StackLayout>
