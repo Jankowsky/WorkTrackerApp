@@ -25,7 +25,7 @@ namespace WorkTrackerApp.Views
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new RaportDetailPage(new RaportDetailViewModel(item)));
+            await Navigation.PushModalAsync(new NavigationPage(new RaportDetailPage(new RaportDetailViewModel(item))));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

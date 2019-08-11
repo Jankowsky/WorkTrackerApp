@@ -25,6 +25,13 @@ namespace WorkTrackerApp.ViewModels
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
+
+            MessagingCenter.Subscribe<RaportDetailPage, Raport>(this, "DeleteItem", async (obj, _item) =>
+            {
+                var oldItem = _item as Raport;
+                Items.Remove(_item);
+                await DataStore.DeleteItemAsync(oldItem.Id);
+            });
         }
 
 

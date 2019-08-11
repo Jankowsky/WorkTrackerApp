@@ -14,10 +14,10 @@ namespace WorkTrackerApp.Services
         {
             items = new List<Raport>();
 
-            LoadData();
+            LoadData().Wait(50);
         }
 
-        public async void LoadData()
+        public async Task LoadData()
         {
             items = await App.Database.GetItemsAsync();
         }
@@ -25,7 +25,7 @@ namespace WorkTrackerApp.Services
         public async Task<bool> AddItemAsync(Raport item)
         {
             await App.Database.SaveItemAsync(item);
-            LoadData();
+            await LoadData();
 
             return await Task.FromResult(true);
         }
@@ -46,7 +46,7 @@ namespace WorkTrackerApp.Services
             var oldItem = items.Where((Raport arg) => arg.Id == id).FirstOrDefault();
             //items.Remove(oldItem);
             await App.Database.DeleteItemAsync(oldItem);
-            LoadData();
+            await LoadData();
             return await Task.FromResult(true);
         }
 
@@ -58,6 +58,7 @@ namespace WorkTrackerApp.Services
 
         public async Task<IEnumerable<Raport>> GetItemsAsync(bool forceRefresh = false)
         {
+            await LoadData();
             return await Task.FromResult(items);
         }
     }

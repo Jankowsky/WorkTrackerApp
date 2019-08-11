@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WorkTrackerApp.Views.RaportDetailPage" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WorkTrackerApp.Views.RaportDetailPage" Title="Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Company:" FontSize="Medium" />
         <Label Text="{Binding Item.Company}" d:Text="Company name" FontSize="Small" />
@@ -10,4 +14,5 @@
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Item.Description}" d:Text="Raport description" FontSize="Small" />
     </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

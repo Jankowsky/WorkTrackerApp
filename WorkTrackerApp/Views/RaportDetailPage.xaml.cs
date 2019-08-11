@@ -35,5 +35,12 @@ namespace WorkTrackerApp.Views
             viewModel = new RaportDetailViewModel(item);
             BindingContext = viewModel;
         }
+
+        
+        async void Delete_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "DeleteItem", viewModel.Item as Raport);
+            await Navigation.PopModalAsync();
+        }
     }
 }

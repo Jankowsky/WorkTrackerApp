@@ -9,7 +9,6 @@ namespace WorkTrackerApp.Helpers
     public class RaportsLocalDatabase
     {
         private SQLiteAsyncConnection database;
-        
 
         public RaportsLocalDatabase(string dbPath)
         {
