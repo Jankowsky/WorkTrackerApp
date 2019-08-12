@@ -4,8 +4,9 @@ namespace WorkTrackerApp.Models
 {
     public class Item
     {
-        public string Id { get; set; }
-        public string Text { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; }
+        public string Company { get; set; }
+        public int WorkedSum { get; set; }
+        public string WorkedTimeText { get; set; }
     }
 }

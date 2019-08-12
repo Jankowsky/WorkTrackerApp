@@ -8,18 +8,20 @@ namespace WorkTrackerApp.Services
 {
     public class SQLiteDataStore : IDataStore<Raport>
     {
-        List<Raport> items;
+        List<Raport> raports;
+      
         
         public SQLiteDataStore()
         {
-            items = new List<Raport>();
+            raports = new List<Raport>();
 
             LoadData().Wait(50);
         }
 
         public async Task LoadData()
         {
-            items = await App.Database.GetItemsAsync();
+            raports = await App.Database.GetItemsAsync();
+           
         }
 
         public async Task<bool> AddItemAsync(Raport item)
@@ -32,7 +34,7 @@ namespace WorkTrackerApp.Services
 
         public async Task<bool> UpdateItemAsync(Raport item)
         {
-            var oldItem = items.Where((Raport arg) => arg.Id == item.Id).FirstOrDefault();
+            var oldItem = raports.Where((Raport arg) => arg.Id == item.Id).FirstOrDefault();
             //items.Remove(oldItem);
             //items.Add(item);
             await App.Database.DeleteItemAsync(oldItem);
@@ -43,7 +45,7 @@ namespace WorkTrackerApp.Services
 
         public async Task<bool> DeleteItemAsync(int id)
         {
-            var oldItem = items.Where((Raport arg) => arg.Id == id).FirstOrDefault();
+            var oldItem = raports.Where((Raport arg) => arg.Id == id).FirstOrDefault();
             //items.Remove(oldItem);
             await App.Database.DeleteItemAsync(oldItem);
             await LoadData();
@@ -59,7 +61,9 @@ namespace WorkTrackerApp.Services
         public async Task<IEnumerable<Raport>> GetItemsAsync(bool forceRefresh = false)
         {
             await LoadData();
-            return await Task.FromResult(items);
+            return await Task.FromResult(raports);
         }
+
+       
     }
 }

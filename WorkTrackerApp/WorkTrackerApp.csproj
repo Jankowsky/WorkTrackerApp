@@ -18,6 +18,7 @@
   <ItemGroup>
     <Compile Remove="Views\RaportDetailPage.cs" />
     <Compile Remove="Views\RaportsPage.cs" />
+    <Compile Remove="Views\AboutPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />

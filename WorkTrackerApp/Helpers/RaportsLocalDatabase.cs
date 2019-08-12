@@ -18,7 +18,7 @@ namespace WorkTrackerApp.Helpers
 
         public Task<List<Raport>> GetItemsAsync()
         {
-            return database.Table<Raport>().ToListAsync();
+            return database.Table<Raport>().OrderBy(r => r.Date).ToListAsync();
         }
 
         //public Task<List<Raport>> GetItemsNotDoneAsync()

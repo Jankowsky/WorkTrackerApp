@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 using WorkTrackerApp.Models;
 using WorkTrackerApp.Views;
@@ -22,15 +23,16 @@ namespace WorkTrackerApp.ViewModels
             MessagingCenter.Subscribe<NewRaportPage, Raport>(this, "AddItem", async (obj, item) =>
             {
                 var newItem = item as Raport;
-                Items.Add(newItem);
+                newItem.Company = item.Company.Normalize();
                 await DataStore.AddItemAsync(newItem);
+                await ExecuteLoadItemsCommand();
             });
 
             MessagingCenter.Subscribe<RaportDetailPage, Raport>(this, "DeleteItem", async (obj, _item) =>
             {
                 var oldItem = _item as Raport;
-                Items.Remove(_item);
                 await DataStore.DeleteItemAsync(oldItem.Id);
+                Items.Remove(oldItem);
             });
         }
 
