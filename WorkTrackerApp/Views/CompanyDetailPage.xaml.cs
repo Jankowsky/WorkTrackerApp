@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microcharts;
 using WorkTrackerApp.Models;
 using WorkTrackerApp.ViewModels;
 

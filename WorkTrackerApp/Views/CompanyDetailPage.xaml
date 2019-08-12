@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WorkTrackerApp.Views.CompanyDetailPage" Title="{Binding Title}">
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"    
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WorkTrackerApp.Views.CompanyDetailPage" Title="{Binding Title}">
     <ContentPage.ToolbarItems>
          <ToolbarItem Text="Back" Clicked="Back_Clicked" />
     </ContentPage.ToolbarItems>
@@ -9,6 +10,7 @@
         <Picker x:Name="YearPicker" Title="Select year" HorizontalOptions="Center" FontAttributes="Bold" ItemsSource="{Binding Years, Mode=OneWay}" SelectedItem="{Binding SelectedItem}" />
         <Label Text="Company:" FontSize="Medium" />
         <Label Text="{Binding Item.Company}" d:Text="Company name" FontSize="Small" />
+         <forms:ChartView x:Name="Chart" HeightRequest="300" Chart="{Binding Chart}"/>
     </StackLayout>
     </ContentPage.Content>
 </ContentPage>
