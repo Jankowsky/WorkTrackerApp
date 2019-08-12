@@ -39,7 +39,15 @@ namespace WorkTrackerApp.Views
         
         async void Delete_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "DeleteItem", viewModel.Item as Raport);
+            if(await DisplayAlert("Delete item", "Are you sure you want to delete this item?", "Yes", "Cancel"))
+            {
+                MessagingCenter.Send(this, "DeleteItem", viewModel.Item as Raport);
+                await Navigation.PopModalAsync();
+            }
+        }
+
+        async void Back_Clicked(object sender, EventArgs e)
+        {
             await Navigation.PopModalAsync();
         }
     }
