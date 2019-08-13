@@ -9,12 +9,12 @@ namespace WorkTrackerApp.Services
     public class SQLiteDataStore : IDataStore<Raport>
     {
         List<Raport> raports;
-      
+        List<Raport> company;
         
         public SQLiteDataStore()
         {
             raports = new List<Raport>();
-
+            company = new List<Raport>();
             LoadData().Wait(50);
         }
 
@@ -22,6 +22,11 @@ namespace WorkTrackerApp.Services
         {
             raports = await App.Database.GetItemsAsync();
            
+        }
+
+        public async Task LoadCompany(string company)
+        {
+            this.company = await App.Database.GetCompanyAsync(company);
         }
 
         public async Task<bool> AddItemAsync(Raport item)
@@ -62,6 +67,12 @@ namespace WorkTrackerApp.Services
         {
             await LoadData();
             return await Task.FromResult(raports);
+        }
+
+        public async Task<IEnumerable<Raport>> GetCompanyAsync(string company,bool forceRefresh = false)
+        {
+            await LoadCompany(company);
+            return await Task.FromResult(this.company);
         }
 
        

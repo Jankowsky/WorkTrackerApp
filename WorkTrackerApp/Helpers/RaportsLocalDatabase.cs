@@ -21,11 +21,6 @@ namespace WorkTrackerApp.Helpers
             return database.Table<Raport>().OrderBy(r => r.Date).ToListAsync();
         }
 
-        //public Task<List<Raport>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<Raport>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
-
         public Task<Raport> GetItemAsync(int id)
         {
             return database.Table<Raport>().Where(i => i.Id == id).FirstOrDefaultAsync();
@@ -46,6 +41,11 @@ namespace WorkTrackerApp.Helpers
         public Task<int> DeleteItemAsync(Raport item)
         {
             return database.DeleteAsync(item);
+        }
+
+        public Task<List<Raport>> GetCompanyAsync(string company)
+        {
+            return database.Table<Raport>().Where(r => r.Company == company).OrderBy(r => r.Date).ToListAsync();
         }
     }
 }

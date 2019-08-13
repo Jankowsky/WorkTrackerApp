@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Microcharts;
 using WorkTrackerApp.Models;
 using WorkTrackerApp.ViewModels;
@@ -8,6 +9,7 @@ using Xamarin.Forms;
 
 namespace WorkTrackerApp.Views
 {
+    [DesignTimeVisible(false)]
     public partial class CompanyDetailPage : ContentPage
     {
         CompanyDetailViewModel viewModel;
@@ -17,6 +19,7 @@ namespace WorkTrackerApp.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
+            
         }
 
         public CompanyDetailPage()
@@ -38,6 +41,11 @@ namespace WorkTrackerApp.Views
         async void Back_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        void Selected_Changed(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "ChangeYear");
         }
     }
 }

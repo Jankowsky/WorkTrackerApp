@@ -7,10 +7,10 @@
     </ContentPage.ToolbarItems>
      <ContentPage.Content>
     <StackLayout Spacing="20" Padding="15">
-        <Picker x:Name="YearPicker" Title="Select year" HorizontalOptions="Center" FontAttributes="Bold" ItemsSource="{Binding Years, Mode=OneWay}" SelectedItem="{Binding SelectedItem}" />
-        <Label Text="Company:" FontSize="Medium" />
-        <Label Text="{Binding Item.Company}" d:Text="Company name" FontSize="Small" />
-         <forms:ChartView x:Name="Chart" HeightRequest="300" Chart="{Binding Chart}"/>
+        <Picker x:Name="YearPicker" Title="Select year" SelectedIndexChanged="Selected_Changed" HorizontalOptions="Center" FontAttributes="Bold" ItemsSource="{Binding Years, Mode=OneWay}" SelectedItem="{Binding SelectedItem}" />
+        <Label Text="Sum:" FontSize="Medium" />
+        <Label Text="{Binding sumWorkedTime}" d:Text="time" FontSize="Small" />
+         <forms:ChartView x:Name="Chart" HeightRequest="300" Chart="{Binding Chart, Mode=OneWay}"/>
     </StackLayout>
     </ContentPage.Content>
 </ContentPage>
