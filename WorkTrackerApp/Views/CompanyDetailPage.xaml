@@ -8,8 +8,7 @@
      <ContentPage.Content>
     <StackLayout Spacing="20" Padding="15">
         <Picker x:Name="YearPicker" Title="Select year" SelectedIndexChanged="Selected_Changed" HorizontalOptions="Center" FontAttributes="Bold" ItemsSource="{Binding Years, Mode=OneWay}" SelectedItem="{Binding SelectedItem}" />
-        <Label Text="Sum:" FontSize="Medium" />
-        <Label Text="{Binding sumWorkedTime}" d:Text="time" FontSize="Small" />
+        <Label Text="{Binding SelectedYear}" d:Text="time" FontSize="Small" />
          <forms:ChartView x:Name="Chart" HeightRequest="300" Chart="{Binding Chart, Mode=OneWay}"/>
     </StackLayout>
     </ContentPage.Content>

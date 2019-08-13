@@ -22,13 +22,14 @@ namespace WorkTrackerApp.ViewModels
         public Chart Chart { get; private set; }
         public Command LoadCompanyCommand { get; set; }
         public int[] workedTime = new int[12];
-        public int sumWorkedTime = 0;
+        public int sumWorkedTime;
         public ObservableCollection<Microcharts.Entry> entries { get; set; }
 
-
-
+       
+        //TODO get all years worked in company
         public CompanyDetailViewModel(Item item = null)
         {
+            sumWorkedTime = 0;
             Years = new List<int>();
             Years.Add(DateTime.Now.Year);
             SelectedYear = Years[0];
